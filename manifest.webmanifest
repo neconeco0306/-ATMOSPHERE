@@ -1,0 +1,9 @@
+{
+  "name": "ATMOSPHERE — Weather as Instrument",
+  "short_name": "ATMOSPHERE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07080a",
+  "theme_color": "#0a0b0d",
+  "description": "Turns live weather, touch and device tilt into a generative audiovisual instrument."
+}
