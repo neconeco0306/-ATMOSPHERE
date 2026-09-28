@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ATMOSPHERE — Weather as Instrument</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div id="veil"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>ATMOSPHERE</span>
+      </div>
+      <button id="muteBtn" class="micro" type="button" aria-label="音を切り替える">SOUND OFF</button>
+    </header>
+
+    <section id="entry" class="entry">
+      <p class="eyebrow">WEATHER AS INSTRUMENT</p>
+      <h1>空気を、<br><em>聴く。</em></h1>
+      <p class="lead">風・湿度・気圧・雨・時刻を、音と流れに変換する。<br>これは天気予報ではなく、現在の大気の演奏です。</p>
+      <button id="enterBtn" class="enter" type="button"><span>ENTER</span><small>tap to awaken audio + motion</small></button>
+      <p class="privacy">位置情報は任意です。許可しない場合は福岡市の空気を使います。</p>
+    </section>
+
+    <section id="instrument" class="instrument" hidden>
+      <div class="hero-readout">
+        <div>
+          <p id="placeLabel" class="eyebrow">FUKUOKA · LIVE</p>
+          <div class="temp-row"><span id="temp">--</span><sup>°</sup></div>
+          <p id="weatherText" class="condition">loading atmosphere…</p>
+        </div>
+        <div class="orb-wrap" aria-hidden="true">
+          <div id="orb" class="orb"><div class="orb-core"></div></div>
+        </div>
+      </div>
+
+      <div class="metrics" role="list">
+        <div class="metric" role="listitem"><span>WIND</span><strong id="wind">--</strong><small>km/h</small></div>
+        <div class="metric" role="listitem"><span>HUMID</span><strong id="humidity">--</strong><small>%</small></div>
+        <div class="metric" role="listitem"><span>PRESS</span><strong id="pressure">--</strong><small>hPa</small></div>
+        <div class="metric" role="listitem"><span>RAIN</span><strong id="rain">--</strong><small>mm</small></div>
+      </div>
+
+      <section class="timeline-panel" aria-label="24時間の大気を演奏">
+        <div class="timeline-head">
+          <div>
+            <p class="eyebrow">24H SCRUB</p>
+            <h2 id="timeLabel">NOW</h2>
+          </div>
+          <button id="nowBtn" class="micro" type="button">RETURN NOW</button>
+        </div>
+        <input id="timeSlider" type="range" min="0" max="23" value="0" step="1" aria-label="予報時刻" />
+        <div class="ticks"><span>NOW</span><span>+6H</span><span>+12H</span><span>+18H</span><span>+23H</span></div>
+      </section>
+
+      <section class="gesture-panel">
+        <div class="gesture-copy">
+          <p class="eyebrow">TOUCH / TILT</p>
+          <p>画面を撫でると風が曲がる。タップで共鳴。端末を傾けると音場が移動する。</p>
+        </div>
+        <button id="motionBtn" class="pill" type="button">ENABLE TILT</button>
+      </section>
+
+      <footer>
+        <button id="locateBtn" class="micro" type="button">USE MY AIR</button>
+        <span id="status">LIVE DATA · OPEN-METEO</span>
+      </footer>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
